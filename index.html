@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portafolio profesional – proyectos, habilidades y contacto." />
+  <title>Portafolio | Agustín Opizzo</title>
+  <style>
+    
+    /* ====== Reset mínimo y variables ====== */ 
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    :root{
+      --bg: #0b0d10;
+      --bg-soft: #12151a;
+      --card: #151a22;
+      --text: #e6e9ee;
+      --muted: #9aa4b2;
+      --brand: #5eead4; /* menta */
+      --brand-ink: #064e3b;
+      --accent: #60a5fa; /* azul */
+      --ring: 0 0 0 3px rgba(94,234,212,.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --maxw: 1200px;
+    }
+    
+    /* Fondo de la página  */
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f7fafc; --bg-soft:#eef2f7; --card:#ffffff; --text:#0f172a; --muted:#475569; --brand:#0ea5e9; --brand-ink:#082f49; --accent:#6366f1;
+      }
+    }
+
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; 
+      background:linear-gradient(180deg,var(--bg),var(--bg-soft)); 
+      color:var(--text); 
+      line-height:1.6;
+      }
+
+    img{
+      max-width:100%; 
+      display:block;
+      }
+
+    a{
+      color:inherit; 
+      text-decoration:none;
+      }
+
+    .container{
+      max-width:var(--maxw); 
+      margin:0 auto; 
+      padding:0 24px;
+      }
+
+    /* Configuración de fuentes y estilos*/
+
+    /* ====== Header / Nav ====== */
+    header{
+      position:sticky; 
+      top:0; 
+      z-index:50; 
+      backdrop-filter:saturate(180%) blur(10px); 
+      background: color-mix(in oklab, var(--bg-soft) 85%, transparent); 
+      border-bottom:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      }
+
+    .nav{
+      display:flex; 
+      align-items:center; 
+      justify-content:space-between; 
+      padding:14px 0;
+      }
+
+    .brand{                        
+      display:flex; 
+      align-items:center; 
+      gap:12px; 
+      font-weight:700; 
+      letter-spacing:.2px;
+      }
+
+    .brand-mark{
+      width:28px; 
+      height:28px; 
+      border-radius:10px; 
+      background:linear-gradient(135deg,var(--brand),var(--accent)); 
+      box-shadow:var(--shadow);
+      }
+
+    .menu{
+      display:flex; 
+      gap:18px;
+      }
+
+    .menu a{
+      padding:8px 12px; 
+      border-radius:10px; 
+      color:var(--muted);
+      }
+
+    .menu a:hover,
+    .menu a:focus{
+      outline:none; 
+      background:color-mix(in oklab, var(--card) 80%, transparent); 
+      color:var(--text);
+      }
+    
+
+    /* ====== Hero ====== */
+    .hero{
+      padding:72px 0 36px;
+      }
+
+    .hero .wrap{
+      display:grid; 
+      grid-template-columns:1.4fr 0.6fr; 
+      gap:36px; 
+      align-items:center;
+      }
+
+    .kicker{
+      display:inline-block; 
+      padding:6px 10px; 
+      border-radius:999px; 
+      background:color-mix(in oklab, var(--card) 85%, transparent); 
+      color:var(--muted); 
+      font-size:.9rem;
+      }
+
+    h1{
+      font-size:clamp(2rem, 2.8rem + 1vw, 4rem); 
+      line-height:1.1; 
+      margin:12px 0 16px;
+      }
+
+    .lead{
+      font-size:1.1rem; 
+      color:var(--muted); 
+      max-width:65ch;
+      }
+
+    .hero-card{
+      background:var(--card); 
+      width: 300px;      /* ancho fijo */
+      height: 300px;
+      border:1px solid color-mix(in oklab, var(--text) 10%, transparent); 
+      border-radius: 50%; 
+      padding:22px; 
+      box-shadow:var(--shadow); 
+      } 
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    
+    .stats{
+      display:grid; 
+      grid-template-columns:repeat(3,1fr); 
+      gap:14px; 
+      margin-top:18px;
+      }
+
+    .stat{
+      padding:14px; 
+      border-radius:12px; 
+      background:color-mix(in oklab, var(--card) 92%, transparent); 
+      text-align:center;
+      }
+
+    .stat strong{
+      font-size:1.3rem;
+      }
+
+    /* ====== Section base ====== */
+    section{
+      padding:54px 0;
+      }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0px;
+      margin-bottom: 5px;
+    }
+
+    .section-title{
+      font-size:1.7rem; 
+      margin:0;
+      }
+
+    .section-sub{
+      color:var(--muted); 
+      max-width:70ch;
+      font-size: 1.2rem;
+      }
+
+    /* ====== Habilidades ====== */
+    .skills{                                /*  Grilla de habilidades */
+      display:grid; 
+      grid-template-columns:repeat(3,1fr); 
+      gap:16px;
+      }
+
+    .chip{                                  /* Recuadros */
+      padding:12px 14px; 
+      border-radius:12px; 
+      background:var(--card); 
+      border:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      }
+
+    /* ====== Projectos ====== */
+    .grid{
+      display:grid; 
+      grid-template-columns:repeat(3, 1fr); 
+      gap:18px;
+      }
+
+    .card{
+      background:var(--card); 
+      border:1px solid color-mix(in oklab, var(--text) 10%, transparent); 
+      border-radius:var(--radius); 
+      overflow:hidden; 
+      display:flex; 
+      flex-direction:column; 
+      box-shadow:var(--shadow);
+      }
+
+    .card img{
+      aspect-ratio:16/10; 
+      object-fit:cover;
+      }
+
+    .card-body{
+      padding:16px;
+      }
+
+    .tag{
+      display:inline-flex; 
+      align-items:center; 
+      gap:6px; 
+      font-size:.85rem; 
+      color:var(--muted);
+      }
+
+    .tag::before{
+      content:""; 
+      width:8px; 
+      height:8px; 
+      border-radius:50%; 
+      background:var(--accent);
+      }
+
+    .card h3{
+      margin:10px 0 8px; 
+      font-size:1.2rem;
+      }
+
+    .card p{
+      color:var(--muted);
+      }
+
+    .card-actions{
+      display:flex; 
+      gap:10px; 
+      padding:14px 16px 18px;
+      }
+
+    .btn{
+      display:inline-block; 
+      padding:10px 12px; 
+      border-radius:10px; 
+      border:1px solid color-mix(in oklab, var(--text) 14%, transparent); 
+      background:transparent;
+      }
+
+    .btn.primary{
+      background:var(--brand); 
+      color:var(--brand-ink); 
+      border-color:transparent; 
+      font-weight:700;
+      }
+
+    /* ====== Experiencia ====== */
+    .timeline{
+      display:grid; 
+      gap:16px; 
+      border-left:2px dashed color-mix(in oklab, var(--text) 18%, transparent); 
+      padding-left:18px;
+      }
+
+    .t-item{
+      position:relative;
+      }
+
+    .t-item::before{
+      content:""; 
+      position:absolute; 
+      left:-28px; 
+      top:4px; 
+      width:12px; 
+      height:12px; 
+      border-radius:50%; 
+      background:var(--brand); 
+      box-shadow:0 0 0 6px color-mix(in oklab, var(--brand) 25%, transparent);
+      }
+
+    .t-role{
+      font-weight:700;
+      }
+
+    .t-meta{
+      color:var(--muted); 
+      font-size:.95rem
+      }
+
+    /* ====== Contacto ====== */
+    .contact{
+      display:grid; 
+      grid-template-columns:1fr 1fr; 
+      gap:20px;
+      }
+
+    form{
+      display:grid; 
+      gap:12px;
+      }
+
+    label{
+      font-weight:600;
+      }
+
+    input, textarea{
+      width:100%; 
+      padding:12px 14px; 
+      border-radius:12px; 
+      border:1px solid color-mix(in oklab, var(--text) 14%, transparent); 
+      background:color-mix(in oklab, var(--card) 90%, transparent); 
+      color:var(--text);
+      }
+
+    input:focus, textarea:focus{
+      outline:none; 
+      box-shadow:var(--ring); 
+      border-color:transparent;
+      }
+
+    textarea{
+      min-height:140px; 
+      resize:vertical;
+      }
+
+    /* ====== Footer ====== */
+    footer{
+      padding:36px 0; 
+      color:var(--muted); 
+      border-top:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      }
+
+    /* ====== Utilidades y responsive ====== */
+    .sr-only{
+      position:absolute!important; 
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+      }
+
+    .spacer{
+      height:8px;
+      }
+
+    .cards-2{
+      grid-template-columns:repeat(2,1fr);
+      }
+
+    @media (max-width: 980px){
+      .hero .wrap{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .skills{grid-template-columns:repeat(2,1fr)}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 620px){
+      .menu{display:none}
+      .grid{grid-template-columns:1fr}
+      .skills{grid-template-columns:1fr}
+      .stats{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+
+</head>
+<body>
+  <!-- ====== Header ====== -->
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="Volver al inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Agustín Opizzo</span>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <main id="inicio" class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="kicker">Diseñador Gráfico · Frontend Developer  </span>
+        <h1>Construyo marcas y experiencias memorables. <br />
+          <span style="color:var(--brand)">Diseño que vende</span> </h1>
+        <p class="lead">Soy <strong>Agustín Opizzo</strong>, diseñador y desarrollador web. Me enfoco en identidad visual, UI/UX y sitios performantes. </p>
+        <div class="stats" role="list" aria-label="Indicadores">
+          <div class="stat" role="listitem"><strong>+20</strong><div>Proyectos</div></div>
+          <div class="stat" role="listitem"><strong>+10</strong><div>Clientes</div></div>
+          <div class="stat" role="listitem"><strong>~95%</strong><div>Satisfacción</div></div>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Destacado reciente">
+        <img src="https://i.imgur.com/4FIDCwX.jpg" alt="Mi imagen"/>
+        </aside>
+    </div>
+  </main>
+
+  <!-- ====== Proyectos ====== -->
+  <section id="proyectos">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Proyectos</h2>
+        <p class="section-sub">Muestras seleccionadas. Código limpio, tipografía clara y foco en conversión.</p>
+      </div>
+      <div class="grid">
+        <!-- Card 1 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop" alt="Mockup de sitio de restaurante" />
+          <div class="card-body">
+            <span class="tag">Branding · Web</span>
+            <h3>Restaurante – Rebrand + Landing</h3>
+            <p>Identidad cálida, sistema tipográfico y landing orientada a pedidos online.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn primary" href="#" target="_blank" rel="noopener">Ver más</a>
+          </div>
+        </article>
+        <!-- Card 2 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1593642634367-d91a135587b5?q=80&w=1200&auto=format&fit=crop" alt="Dashboard UI" />
+          <div class="card-body">
+            <span class="tag">UI/UX · Dashboard</span>
+            <h3>Panel Analytics</h3>
+            <p>UI minimal con estados vacíos claros y componentes reutilizables.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn primary" href="#" target="_blank" rel="noopener">Ver más</a>
+          </div>
+        </article>
+        <!-- Card 3 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="Sitio ecommerce" />
+          <div class="card-body">
+            <span class="tag">E‑commerce</span>
+            <h3>Tienda Streetwear</h3>
+            <p>Arquitectura de información clara, fichas de producto y checkout simple.</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn primary" href="#" target="_blank" rel="noopener">Ver más</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Habilidades ====== -->
+  <section id="habilidades">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Habilidades</h2>
+        <p class="section-sub">Stack y competencias principales.</p>
+      </div>
+      <div class="skills">
+        <div class="chip">HTML5 / CSS3 (Grid, Flex)</div>
+        <div class="chip">Figma / Prototipado</div>
+        <div class="chip">JavaScript / Accesibilidad</div>
+        <div class="chip">Branding / Identidad</div>
+        <div class="chip">SEO técnico básico</div>
+        <div class="chip">Performance web</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Experiencia ====== -->
+  <section id="experiencia">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Experiencia</h2>
+        <p class="section-sub">Breve línea de tiempo. Enfócate en impacto y resultados.</p>
+      </div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-role">Diseñador / Frontend – Estudio XYZ</div>
+          <div class="t-meta">2024 – Presente · Montevideo</div>
+          <p>Rediseño de marcas y sitios. Aumento del CTR en campañas (+22%) y mejora de velocidad (LCP &lt; 2.5s).</p>
+        </div>
+        <div class="t-item">
+          <div class="t-role">Brand Designer – Freelance</div>
+          <div class="t-meta">2022 – 2024 · Remoto</div>
+          <p>Sistemas de identidad y manuales de marca para pymes. Webs one‑page enfocadas en conversión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Contacto ====== -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-sub">¿Proyecto en mente? Escribime y lo volvemos real.</p>
+      </div>
+      <div class="contact">
+        <form name="contact" method="post" data-netlify="true" onsubmit="this.querySelector('button').disabled=true">
+          <input type="hidden" name="form-name" value="contact" />
+          <div>
+            <label for="name">Nombre</label>
+            <input id="name" name="name" autocomplete="name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" autocomplete="email" required />
+          </div>
+          <div>
+            <label for="msg">Mensaje</label>
+            <textarea id="msg" name="message" placeholder="Contame brevemente tu proyecto…" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Enviar</button>
+        </form>
+        <aside class="card" style="padding:18px">
+          <h3 style="margin:0 0 8px">Disponibilidad</h3>
+          <p class="section-sub">Abierto a proyectos de branding, landing pages y UI para dashboards. Respondo en 24–48 h.</p>
+          <div class="spacer"></div>
+          <div class="skills cards-2">
+            <a class="btn" href="mailto:">aguopizzo@gmail.com</a>
+            <a class="btn" href="https://www.linkedin.com/in/agustin-opizzo/" target="_blank" 
+            rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://www.behance.net/agustinopizzo" target="_blank" 
+            rel="noopener">Behance</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+      <div>© <span id="y"></span> Agustín Opizzo. Hecho con HTML & CSS.</div>
+      <a class="btn" href="#inicio" aria-label="Volver arriba">↑ Arriba</a>
+    </div>
+  </footer>
+
+  <script>
+    // Año automático en el footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
